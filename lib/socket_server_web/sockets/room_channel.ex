@@ -32,8 +32,18 @@ defmodule SocketServerWeb.Sockets.RoomChannel do
     {:noreply, socket}
   end
 
+  # Handles all messages
+  # Message received should always be a map with fields - event, topic, payload, ref
+  @impl true
+  def handle_in(event, payload, socket) do
+    IO.inspect(event, label: "event")
+    IO.inspect(payload, label: "payload")
+    {:noreply, socket}
+  end
+
+  # Message sent will always be a map with fields - event, topic, payload, ref
   def send_message(room_id, msg) do
-    SocketServerWeb.Endpoint.broadcast!("room:" <> room_id, "new_msg", %{body: msg})
+    SocketServerWeb.Endpoint.broadcast!("room:#{room_id}", "new_msg", msg)
   end
 
   # Add authorization logic here as required.
