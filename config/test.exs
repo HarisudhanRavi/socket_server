@@ -4,7 +4,7 @@ import Config
 # you can enable the server option below.
 config :socket_server, SocketServerWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "9kL95ufn2+fvEEa+LqRoMrmoSZ1pXhUIE6qOBA+6VP9/t0T0ptGJ+ZskqGYv7Mox",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   server: false
 
 # Print only warnings and errors during test

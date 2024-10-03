@@ -13,7 +13,7 @@ config :socket_server, SocketServerWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "mIkfzvv0fFVfzk2cXT4ISa+zE7uNrP+lvSTXWI+lWUDE/KdHSz9orRl9R6yMWbml",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   watchers: []
 
 # ## SSL Support
